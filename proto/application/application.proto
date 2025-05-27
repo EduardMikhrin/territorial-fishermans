@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package application;
+
+option go_package = "github.com/EduardMikhrin/territorial-fishermans/internal/types";
+
+import "google/protobuf/timestamp.proto";
+
+
+
+// Application represents a fishing permit application record.
+message Application {
+  uint64                    id            = 1;
+  uint64                    client_id     = 2;
+  google.protobuf.Timestamp fishing_date  = 3;
+  string                    location      = 4;
+  string         status                   = 5;
+  google.protobuf.Timestamp created_at    = 6;
+}
+
+message SubmitApplication {
+  uint64                    id            = 1;
+  uint64                    client_id     = 2;
+  google.protobuf.Timestamp fishing_date  = 3;
+  uint64                    location_id    = 4;
+  uint64         status_id                   = 5;
+  google.protobuf.Timestamp created_at    = 6;
+}
+
+// SubmitApplicationRequest carries the payload to create a new application.
+message SubmitApplicationRequest {
+  SubmitApplication application = 1;
+}
+
+message SubmitApplicationResponse {
+  int64 application_id = 1;
+}
+
+// DeleteApplicationRequest identifies an application to remove.
+message DeleteApplicationRequest {
+  uint64 application_id = 1;
+}
+
+// DeleteApplicationResponse reports whether deletion was successful.
+message DeleteApplicationResponse {
+}
+
+// ListApplicationsRequest supports retrieving applications with pagination.
+message ListApplicationsRequest {
+}
+
+// ListApplicationsResponse returns a page of applications and a token for the next page.
+message ListApplicationsResponse {
+  repeated Application applications   = 1;
+  string              next_page_token = 2;
+}
+
+// GetApplicationByIdRequest identifies which application to fetch.
+message GetApplicationByIdRequest {
+  uint64 application_id = 1;
+}
+
+// GetApplicationByIdResponse returns the requested application.
+message GetApplicationByIdResponse {
+  Application application = 1;
+}
+
+// UpdateApplicationRequest carries the updated application data.
+message UpdateApplicationRequest {
+  SubmitApplication application = 1;
+}
+
+// UpdateApplicationResponse returns the update status.
+message UpdateApplicationResponse {
+}

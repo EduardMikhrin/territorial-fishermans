@@ -1,0 +1,978 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Fisherman API",
+    "version": "0.1.0"
+  },
+  "tags": [
+    {
+      "name": "FishermanService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/application_statuses": {
+      "get": {
+        "operationId": "FishermanService_GetAllApplicationStatuses",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/application_statusGetAllApplicationsStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/application_statuses/delete/{id}": {
+      "delete": {
+        "operationId": "FishermanService_DeleteApplicationStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/application_statusDeleteApplicationStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/application_statuses/submit": {
+      "post": {
+        "operationId": "FishermanService_SubmitApplicationStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/application_statusSubmitApplicationStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/application_statusSubmitApplicationStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/application_statuses/update": {
+      "patch": {
+        "operationId": "FishermanService_UpdateApplicationStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/application_statusUpdateApplicationStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/application_statusUpdateApplicationStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/application_statuses/{id}": {
+      "get": {
+        "operationId": "FishermanService_GetApplicationStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/application_statusGetApplicationStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/applications": {
+      "get": {
+        "operationId": "FishermanService_GetAllApplications",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/applicationListApplicationsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/applications/delete/{applicationId}": {
+      "delete": {
+        "operationId": "FishermanService_DeleteApplication",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/applicationDeleteApplicationResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/applications/submit": {
+      "post": {
+        "operationId": "FishermanService_SubmitApplication",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/applicationSubmitApplicationResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "SubmitApplicationRequest carries the payload to create a new application.",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/applicationSubmitApplicationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/applications/update": {
+      "patch": {
+        "operationId": "FishermanService_UpdateApplication",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/applicationUpdateApplicationResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "UpdateApplicationRequest carries the updated application data.",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/applicationUpdateApplicationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/applications/{applicationId}": {
+      "get": {
+        "operationId": "FishermanService_GetApplicationById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/applicationGetApplicationByIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/clients": {
+      "get": {
+        "operationId": "FishermanService_GetAllClients",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/clientGetAllClientsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/clients/delete/{clientId}": {
+      "delete": {
+        "operationId": "FishermanService_DeleteClient",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/clientDeleteClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/clients/submit": {
+      "post": {
+        "operationId": "FishermanService_SubmitClient",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/clientSubmitClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/clientSubmitClientRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/clients/update": {
+      "patch": {
+        "operationId": "FishermanService_UpdateClient",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/clientUpdateClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/clientUpdateClientRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/clients/{clientId}": {
+      "get": {
+        "operationId": "FishermanService_GetClientById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/clientGetClientByIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/locations": {
+      "get": {
+        "operationId": "FishermanService_GetAllLocations",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/locationGetAllLocationsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/locations/delete/{locationId}": {
+      "delete": {
+        "operationId": "FishermanService_DeleteLocation",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/locationDeleteLocationResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/locations/submit": {
+      "post": {
+        "operationId": "FishermanService_SubmitLocation",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/locationSubmitLocationResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/locationSubmitLocationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/locations/update": {
+      "patch": {
+        "operationId": "FishermanService_UpdateLocation",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/locationUpdateLocationResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/locationUpdateLocationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    },
+    "/locations/{locationId}": {
+      "get": {
+        "operationId": "FishermanService_GetLocationById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/locationGetLocationByIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "FishermanService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "applicationApplication": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "clientId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "fishingDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "location": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "description": "Application represents a fishing permit application record."
+    },
+    "applicationDeleteApplicationResponse": {
+      "type": "object",
+      "description": "DeleteApplicationResponse reports whether deletion was successful."
+    },
+    "applicationGetApplicationByIdResponse": {
+      "type": "object",
+      "properties": {
+        "application": {
+          "$ref": "#/definitions/applicationApplication"
+        }
+      },
+      "description": "GetApplicationByIdResponse returns the requested application."
+    },
+    "applicationListApplicationsResponse": {
+      "type": "object",
+      "properties": {
+        "applications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/applicationApplication"
+          }
+        },
+        "nextPageToken": {
+          "type": "string"
+        }
+      },
+      "description": "ListApplicationsResponse returns a page of applications and a token for the next page."
+    },
+    "applicationSubmitApplication": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "clientId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "fishingDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "locationId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "statusId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "applicationSubmitApplicationRequest": {
+      "type": "object",
+      "properties": {
+        "application": {
+          "$ref": "#/definitions/applicationSubmitApplication"
+        }
+      },
+      "description": "SubmitApplicationRequest carries the payload to create a new application."
+    },
+    "applicationSubmitApplicationResponse": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "applicationUpdateApplicationRequest": {
+      "type": "object",
+      "properties": {
+        "application": {
+          "$ref": "#/definitions/applicationSubmitApplication"
+        }
+      },
+      "description": "UpdateApplicationRequest carries the updated application data."
+    },
+    "applicationUpdateApplicationResponse": {
+      "type": "object",
+      "description": "UpdateApplicationResponse returns the update status."
+    },
+    "application_statusApplicationStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "application_statusDeleteApplicationStatusResponse": {
+      "type": "object"
+    },
+    "application_statusGetAllApplicationsStatusResponse": {
+      "type": "object",
+      "properties": {
+        "applicationStatuses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/application_statusApplicationStatus"
+          }
+        }
+      }
+    },
+    "application_statusGetApplicationStatusResponse": {
+      "type": "object",
+      "properties": {
+        "applicationStatus": {
+          "$ref": "#/definitions/application_statusApplicationStatus"
+        }
+      }
+    },
+    "application_statusSubmitApplicationStatusRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "application_statusSubmitApplicationStatusResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "application_statusUpdateApplicationStatusRequest": {
+      "type": "object",
+      "properties": {
+        "applicationStatus": {
+          "$ref": "#/definitions/application_statusApplicationStatus"
+        }
+      }
+    },
+    "application_statusUpdateApplicationStatusResponse": {
+      "type": "object"
+    },
+    "clientClient": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "contact": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string"
+        }
+      }
+    },
+    "clientDeleteClientResponse": {
+      "type": "object",
+      "title": "Response after deleting a client"
+    },
+    "clientGetAllClientsResponse": {
+      "type": "object",
+      "properties": {
+        "clients": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/clientClient"
+          }
+        }
+      },
+      "title": "Response with all clients"
+    },
+    "clientGetClientByIdResponse": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/clientClient"
+        }
+      },
+      "title": "Response with a single client by ID"
+    },
+    "clientSubmitClientRequest": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/clientClient"
+        }
+      },
+      "title": "Request to submit (create) a new client"
+    },
+    "clientSubmitClientResponse": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "title": "Response after submitting (creating) a client"
+    },
+    "clientUpdateClientRequest": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/clientClient"
+        }
+      },
+      "title": "Request to update an existing client"
+    },
+    "clientUpdateClientResponse": {
+      "type": "object",
+      "title": "Response after updating a client"
+    },
+    "locationDeleteLocationResponse": {
+      "type": "object",
+      "title": "Response after deleting a location"
+    },
+    "locationGetAllLocationsResponse": {
+      "type": "object",
+      "properties": {
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/locationLocation"
+          }
+        }
+      },
+      "title": "Response with all locations"
+    },
+    "locationGetLocationByIdResponse": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "$ref": "#/definitions/locationLocation"
+        }
+      },
+      "title": "Response with a single location"
+    },
+    "locationLocation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string"
+        }
+      }
+    },
+    "locationSubmitLocationRequest": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "$ref": "#/definitions/locationLocation"
+        }
+      }
+    },
+    "locationSubmitLocationResponse": {
+      "type": "object",
+      "properties": {
+        "locationId": {
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "title": "Response after submitting (creating) a location"
+    },
+    "locationUpdateLocationRequest": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "$ref": "#/definitions/locationLocation"
+        }
+      },
+      "title": "Request to update a location"
+    },
+    "locationUpdateLocationResponse": {
+      "type": "object",
+      "title": "Response after updating a location"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

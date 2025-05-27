@@ -1,0 +1,154 @@
+syntax = "proto3";
+
+package  api;
+option go_package = "github.com/EduardMikhrin/territorial-fishermans/internal/api/grpc";
+import  "application.proto";
+import "client.proto";
+import "location.proto";
+import "application_status.proto";
+import "google/api/annotations.proto";
+import "gogoproto/gogo.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Fisherman API"
+    version: "0.1.0"
+
+  }
+};
+
+
+service FishermanService {
+  rpc SubmitApplication(application.SubmitApplicationRequest) returns (application.SubmitApplicationResponse){
+    option (google.api.http) = {
+      post: "/applications/submit"
+      body: "*"
+    };
+  }
+
+  rpc UpdateApplication(application.UpdateApplicationRequest) returns (application.UpdateApplicationResponse){
+    option (google.api.http) = {
+      patch: "/applications/update"
+      body: "*"
+    };
+  }
+
+  rpc DeleteApplication(application.DeleteApplicationRequest) returns (application.DeleteApplicationResponse){
+    option (google.api.http) = {
+      delete: "/applications/delete/{application_id}"
+    };
+  }
+
+  rpc GetAllApplications(application.ListApplicationsRequest) returns (application.ListApplicationsResponse){
+    option (google.api.http) = {
+      get: "/applications"
+    };
+  }
+
+  rpc GetApplicationById(application.GetApplicationByIdRequest) returns (application.GetApplicationByIdResponse){
+    option (google.api.http) = {
+      get: "/applications/{application_id}"
+    };
+  }
+
+  rpc SubmitClient (client.SubmitClientRequest) returns (client.SubmitClientResponse){
+    option (google.api.http) = {
+      post: "/clients/submit"
+      body: "*"
+    };
+  }
+
+  rpc UpdateClient (client.UpdateClientRequest) returns (client.UpdateClientResponse){
+    option (google.api.http) = {
+      patch: "/clients/update"
+      body: "*"
+    };
+  }
+  rpc DeleteClient (client.DeleteClientRequest) returns (client.DeleteClientResponse){
+    option (google.api.http) = {
+      delete: "/clients/delete/{client_id}"
+    };
+  }
+  rpc GetAllClients (client.GetAllClientsRequest) returns (client.GetAllClientsResponse){
+    option (google.api.http) = {
+      get: "/clients"
+    };
+  }
+  rpc GetClientById (client.GetClientByIdRequest) returns (client.GetClientByIdResponse){
+    option (google.api.http) = {
+      get: "/clients/{client_id}"
+    };
+  }
+
+  rpc SubmitLocation (location.SubmitLocationRequest) returns (location.SubmitLocationResponse) {
+    option (google.api.http) = {
+      post: "/locations/submit"
+      body: "*"
+    };
+  }
+
+  rpc UpdateLocation (location.UpdateLocationRequest) returns (location.UpdateLocationResponse) {
+    option (google.api.http) = {
+      patch: "/locations/update"
+      body: "*"
+    };
+  }
+
+  rpc DeleteLocation (location.DeleteLocationRequest) returns (location.DeleteLocationResponse) {
+    option (google.api.http) = {
+      delete: "/locations/delete/{location_id}"
+    };
+  }
+
+  rpc GetAllLocations (location.GetAllLocationsRequest) returns (location.GetAllLocationsResponse) {
+    option (google.api.http) = {
+      get: "/locations"
+    };
+  }
+
+  rpc GetLocationById (location.GetLocationByIdRequest) returns (location.GetLocationByIdResponse) {
+    option (google.api.http) = {
+      get: "/locations/{location_id}"
+    };
+  }
+
+  rpc SubmitApplicationStatus(application_status.SubmitApplicationStatusRequest)
+      returns (application_status.SubmitApplicationStatusResponse) {
+    option (google.api.http) = {
+      post: "/application_statuses/submit"
+      body: "*"
+    };
+  }
+
+  rpc UpdateApplicationStatus(application_status.UpdateApplicationStatusRequest)
+      returns (application_status.UpdateApplicationStatusResponse) {
+    option (google.api.http) = {
+      patch: "/application_statuses/update"
+      body: "*"
+    };
+  }
+
+  rpc DeleteApplicationStatus(application_status.DeleteApplicationStatusRequest)
+      returns (application_status.DeleteApplicationStatusResponse) {
+    option (google.api.http) = {
+      delete: "/application_statuses/delete/{id}"
+    };
+  }
+
+  rpc GetApplicationStatus(application_status.GetApplicationStatusRequest)
+      returns (application_status.GetApplicationStatusResponse) {
+    option (google.api.http) = {
+      get: "/application_statuses/{id}"
+    };
+  }
+
+  rpc GetAllApplicationStatuses(application_status.GetAllApplicationsStatusRequest)
+      returns (application_status.GetAllApplicationsStatusResponse) {
+    option (google.api.http) = {
+      get: "/application_statuses"
+    };
+  }
+}
+
+
+

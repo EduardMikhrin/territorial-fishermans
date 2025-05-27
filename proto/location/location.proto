@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package location;
+
+option go_package = "github.com/EduardMikhrin/territorial-fishermans/internal/types";
+
+message Location {
+  uint64 id = 1;
+  string name = 2;
+  string description = 3;
+  string photo = 4;
+}
+
+
+message SubmitLocationRequest {
+  Location location = 1;
+}
+
+// Response after submitting (creating) a location
+message SubmitLocationResponse {
+  int64 location_id =1;
+}
+
+// Request to update a location
+message UpdateLocationRequest {
+  Location location = 1;
+}
+
+// Response after updating a location
+message UpdateLocationResponse {
+}
+
+// Request to delete a location
+message DeleteLocationRequest {
+  uint64 location_id = 1;
+}
+
+// Response after deleting a location
+message DeleteLocationResponse {
+}
+
+// Request to get all locations
+message GetAllLocationsRequest {
+}
+
+// Response with all locations
+message GetAllLocationsResponse {
+  repeated Location locations = 1;
+}
+
+// Request to get a location by ID
+message GetLocationByIdRequest {
+  uint64 location_id = 1;
+}
+
+// Response with a single location
+message GetLocationByIdResponse {
+  Location location = 1;
+}

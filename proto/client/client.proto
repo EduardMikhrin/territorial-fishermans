@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package client;
+
+option go_package = "github.com/EduardMikhrin/territorial-fishermans/internal/types";
+
+message Client {
+   uint64 id = 1;
+   string name = 2;
+   string surname = 3;
+   string contact = 4;
+   string photo = 5;
+}
+
+
+// Request to submit (create) a new client
+message SubmitClientRequest {
+   Client client = 1;
+}
+
+// Response after submitting (creating) a client
+message SubmitClientResponse {
+   int64 client_id = 1;
+}
+
+// Request to update an existing client
+message UpdateClientRequest {
+   Client client = 1;
+}
+
+// Response after updating a client
+message UpdateClientResponse {
+}
+
+// Request to delete a client
+message DeleteClientRequest {
+   uint64 client_id = 1;
+}
+
+// Response after deleting a client
+message DeleteClientResponse {
+}
+
+// Request to get all clients
+message GetAllClientsRequest {
+}
+
+// Response with all clients
+message GetAllClientsResponse {
+   repeated Client clients = 1;
+}
+
+// Request to get a client by ID
+message GetClientByIdRequest {
+   uint64 client_id = 1;
+}
+
+// Response with a single client by ID
+message GetClientByIdResponse {
+   Client client = 1;
+}

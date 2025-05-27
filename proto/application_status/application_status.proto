@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package application_status;
+
+option go_package = "github.com/EduardMikhrin/territorial-fishermans/internal/types";
+
+
+message ApplicationStatus {
+  uint64 id = 1;
+  string name = 2;
+}
+
+
+message SubmitApplicationStatusRequest {
+  string name = 1;
+}
+
+message SubmitApplicationStatusResponse{
+  int64 id =1;
+}
+
+
+message UpdateApplicationStatusRequest{
+    ApplicationStatus application_status = 1;
+}
+
+message UpdateApplicationStatusResponse{}
+
+message DeleteApplicationStatusRequest{
+  uint64 id = 1;
+}
+
+message DeleteApplicationStatusResponse{}
+
+message GetApplicationStatusRequest{
+  uint64 id = 1;
+}
+
+message GetApplicationStatusResponse{
+  ApplicationStatus application_status = 1;
+}
+
+message GetAllApplicationsStatusRequest{
+}
+
+message GetAllApplicationsStatusResponse{
+  repeated ApplicationStatus application_statuses =1;
+}
+
